@@ -9,9 +9,6 @@ const withBundleAnalyzer = require('@next/bundle-analyzer')({
 });
 
 module.exports = withPlugins([optimizedImages, withBundleAnalyzer], {
-    future: {
-        webpack5: true,
-    },
     webpack: function (cfg) {
         const webpack = require('webpack');
         const originalEntry = cfg.entry;
