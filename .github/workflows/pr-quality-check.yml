@@ -1,0 +1,90 @@
+name: 📋 PR Quality check
+
+on:
+  pull_request:
+    branches: [main]
+
+jobs:
+  lint:
+    name: 👩‍🏫 Linting
+    runs-on: ubuntu-latest
+    steps:
+      - name: ⛔️ Cancel Previous Runs
+        uses: styfle/cancel-workflow-action@0.9.1
+
+      - name: 📥 Checkout repo
+        uses: actions/checkout@v2
+
+      - name: 🔧 Setup node
+        uses: actions/setup-node@v2
+        with:
+          node-version: 16
+
+      - name: 📥 Download deps
+        uses: bahmutov/npm-install@v1
+
+      - name: 🔬 Lint
+        run: yarn lint
+
+  typecheck:
+    name: 👮‍♀️ Type checking
+    runs-on: ubuntu-latest
+    steps:
+      - name: ⛔️ Cancel Previous Runs
+        uses: styfle/cancel-workflow-action@0.9.1
+
+      - name: 📥 Checkout repo
+        uses: actions/checkout@v2
+
+      - name: 🔧 Setup node
+        uses: actions/setup-node@v2
+        with:
+          node-version: 16
+
+      - name: 📥 Download deps
+        uses: bahmutov/npm-install@v1
+
+      - name: 🔬 Type check
+        run: yarn typecheck
+
+  jest:
+    name: 👩🏽‍🔬 Unit testing
+    runs-on: ubuntu-latest
+    steps:
+      - name: ⛔️ Cancel Previous Runs
+        uses: styfle/cancel-workflow-action@0.9.1
+
+      - name: 📥 Checkout repo
+        uses: actions/checkout@v2
+
+      - name: 🔧 Setup node
+        uses: actions/setup-node@v2
+        with:
+          node-version: 16
+
+      - name: 📥 Download deps
+        uses: bahmutov/npm-install@v1
+
+      - name: ⚗️ Run jest
+        run: yarn test --coverage
+
+  build:
+    name: 👷‍♀️ Building
+    runs-on: ubuntu-latest
+    steps:
+      - name: ⛔️ Cancel Previous Runs
+        uses: styfle/cancel-workflow-action@0.9.1
+
+      - name: 📥 Checkout repo
+        uses: actions/checkout@v2
+
+      - name: 🔧 Setup node
+        uses: actions/setup-node@v2
+        with:
+          node-version: 16
+
+      - name: 📥 Download deps
+        uses: bahmutov/npm-install@v1
+
+      - name: ⚒ Run build
+        run: yarn build

@@ -14,6 +14,7 @@
     "prettier:fix": "prettier --write \"src/**/*.tsx\" \"src/**/*.ts\" \".storybook/**/*.js\"",
     "stylelint": "stylelint \"*.scss\" \"**/*.scss\"",
     "stylelint:fix": "stylelint \"*.scss\" \"**/*.scss\" --fix",
+    "typecheck": "tsc --noEmit -p ./tsconfig.json",
     "prepare": "husky install",
     "storybook": "start-storybook -p 6006 -s ./public -s ./src/assets/fonts",
     "build-storybook": "build-storybook -s ./public -s ./src/assets/fonts"
