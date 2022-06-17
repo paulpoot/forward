@@ -48,7 +48,7 @@ jobs:
         run: yarn typecheck
 
   jest:
-    name: 👩🏽‍🔬 Unit testing
+    name: 👩‍🔬 Unit testing
     runs-on: ubuntu-latest
     steps:
       - name: ⛔️ Cancel Previous Runs
