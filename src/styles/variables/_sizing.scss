@@ -1,0 +1,12 @@
+// Sizing
+$s-base: 16px;
+
+$s-container-max-width: 1330px;
+$s-container-max-width-lg: 1520px;
+
+$s-container-gutter: 1rem;
+$s-container-gutter-lg: 2.5rem;
+
+// Text should not take up more than 1/2 of the maximum grid width for better readability.
+$s-max-width-text: #{$s-container-max-width / 2};
+$s-max-width-text-lg: #{$s-container-max-width-lg / 2};

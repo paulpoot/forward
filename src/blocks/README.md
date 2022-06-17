@@ -1,2 +1,0 @@
-# src/blocks
-This folder should contain React components that are a lot smarter than the usual button, accordeon, logo stuff. Two components are included: A meta block that interfaces with the page head (and could contain analytics code) and a Rich Text renderer for Contentful.

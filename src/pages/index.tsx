@@ -1,27 +1,31 @@
-import React from 'react';
-import { GetStaticProps } from 'next';
-import DefaultLayout from '~/src/layout';
-import { RichText } from '~/src/blocks/rich-text';
-import { resolveBySlug } from '~/lib/contentful/slug-resolver';
-import { IPageFields } from '~/@types/generated/contentful';
+import Container from '@atoms/Container/Container';
+import Heading from '@atoms/Heading/Heading';
+import Spacer from '@atoms/Spacer/Spacer';
+import Text from '@atoms/Text/Text';
+import Meta from '@blocks/meta';
+import GetStartedOverview from '@molecules/GetStartedOverview/GetStartedOverview';
+import DefaultLayout from '@templates/layouts/DefaultLayout/DefaultLayout';
 
-type Props = {
-    data: IPageFields;
-};
+function HomePage() {
+  return (
+    <>
+      <Meta title="Welcome!" />
+      <Container>
+        <Heading level="h2" align="center" className="h1">
+          Welcome to <a href="https://nextjs.org">Next.js!</a>
+        </Heading>
 
-function HomePage({ data }: Props): JSX.Element {
-    return <>{data.content && <RichText document={data.content} />}</>;
+        <Text align="center">
+          Get started by editing <Text variant="code">pages/index.tsx</Text>
+        </Text>
+
+        <Spacer size="base" />
+
+        <GetStartedOverview />
+      </Container>
+    </>
+  );
 }
-
-export const getStaticProps: GetStaticProps = async () => {
-    const res = await resolveBySlug('/');
-
-    return {
-        props: {
-            data: res.fields,
-        },
-    };
-};
 
 HomePage.Layout = DefaultLayout;
 

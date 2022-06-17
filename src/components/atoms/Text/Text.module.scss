@@ -1,0 +1,55 @@
+@import '@styles/variables';
+
+.text {
+  font-size: 1rem;
+  line-height: 1.5rem;
+  font-weight: 400;
+}
+
+.primary {
+  color: $color--primary;
+}
+
+.secondary {
+  color: $color--secondary;
+}
+
+.xs {
+  font-size: 0.875rem;
+  line-height: 1rem;
+}
+
+.sm {
+  font-size: 1rem;
+  line-height: 1.5rem;
+}
+
+.lg {
+  font-size: 1.125rem;
+  line-height: 1.5rem;
+}
+
+.xl {
+  font-size: 1.25rem;
+  line-height: 1.5rem;
+}
+
+.left {
+  text-align: left;
+}
+
+.center {
+  text-align: center;
+}
+
+.right {
+  text-align: right;
+}
+
+.code {
+  background-color: $color--neutral-200;
+}
+
+.label {
+  font-weight: 600;
+}

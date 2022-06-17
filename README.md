@@ -1,14 +1,24 @@
-This is an opinionated Next.js setup featuring a few defaults that I often implement in my projects.
+# Forward
+
+This is an opinionated [Next.js](https://nextjs.org/) boilerplate that features a bunch of configurations that I enjoy developing with.
 
 ## Features
-- Strict Typescript setup for optimal maintainability
-- Storybook for optimal component based development
-- Contentful integration with a typescript generator to automatically create types
-- SVG Sprite Loader for using SVG icons as a spritemap
-- Next sitemap for creating sitemaps
-- classnames for easier styling
-- Normalize.css
-- QA script for code quality testing
+
+- Next.js with strict Typescript setup
+- Storybook
+- Jest and Testing Library
+- SASS
+- normalize.css
+- Husky with Commitlint set to conventional commits
+- A whole bunch of linting
+- clsx for easy combining of classnames
+- A folder structure that should cover pretty much everything you want for most larger projects
+- Setup for custom fonts
+- A few ready-to-use components, like a meta, heading, spacer and text component
+- Default layout setup
+- A media query context that can be used to determine screensize in Javascript
+- A basic setup for global styling and variables
+- A throttle util function
 
 ## Getting Started
 
@@ -22,7 +32,11 @@ yarn dev
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-You can start editing the page by modifying `pages/index.js`. The page auto-updates as you edit the file.
+You can start editing the page by modifying `pages/index.tsx`. The page auto-updates as you edit the file.
+
+[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.ts`.
+
+The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
 
 ## Learn More
 

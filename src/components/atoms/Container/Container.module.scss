@@ -1,0 +1,40 @@
+@import '@styles/variables';
+@import '@styles/mixins';
+
+.container {
+  width: 100%;
+  margin: 0 auto;
+}
+
+.container.gutter {
+  padding-left: $s-container-gutter;
+  padding-right: $s-container-gutter;
+}
+
+@include breakpoint('medium') {
+  .container.gutter {
+    padding-left: $s-container-gutter-lg;
+    padding-right: $s-container-gutter-lg;
+  }
+}
+
+// Use custom breakpoints so we can remove the padding and apply the max-width
+// only when the screen has exceeded the container's max-width + 80px (2.5rem padding on each side).
+// In this case the max-width + the margin: auto will create the gutters, so we don't need the padding.
+@media (min-width: #{$s-container-max-width + 80}) {
+  .container {
+    max-width: $s-container-max-width;
+  }
+
+  .container.gutter {
+    padding-left: 0;
+    padding-right: 0;
+  }
+}
+
+// Increase container size when on extra large screens
+@include breakpoint('extra-large') {
+  .container {
+    max-width: $s-container-max-width-lg;
+  }
+}

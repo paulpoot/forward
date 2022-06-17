@@ -1,0 +1,14 @@
+@import '@styles/variables';
+
+// Mixin that uses the $breakpoints variable in variables/breakpoints to construct media queries.
+// Always goes [breakpoint]-up
+@mixin breakpoint($breakpoint) {
+  @if map-has-key($breakpoints, $breakpoint) {
+    @media (min-width: map-get($breakpoints, $breakpoint)) {
+      @content;
+    }
+  } @else {
+    @warn "Value `#{$breakpoint}` is not a valid breakpoint. "
+			+ "Available breakpoints are: #{map-keys($breakpoints)}.";
+  }
+}

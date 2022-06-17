@@ -1,0 +1,7 @@
+/* Global styling should go here. */
+@import '~/node_modules/normalize.css/normalize.css';
+
+@import 'variables/index';
+@import 'mixins/index';
+
+@import 'global/index';

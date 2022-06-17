@@ -1,38 +1,50 @@
-import React, { FunctionComponent } from 'react';
+import React from 'react';
+
 import Head from 'next/head';
-import { IMetaFields } from '~/@types/generated/contentful';
 
-type Props = IMetaFields;
+export type Props = {
+  title?: string | null;
+  description?: string | null;
+  openGraphTitle?: string | null;
+  openGraphDescription?: string | null;
+  openGraphImage?: string | null;
+  index?: boolean;
+  follow?: boolean;
+};
 
-const Meta: FunctionComponent<Props> = (meta: Props) => {
-    return (
-        <Head>
-            <title>{meta.title}</title>
-            <meta charSet="utf-8" />
-            <meta name="viewport" content="initial-scale=1.0, width=device-width" />
-            <meta httpEquiv="X-UA-Compatible" content="IE=edge" />
-            <meta name="description" content={meta.description} />
-            {/* TODO: Check locale. Perhaps base it on router for multilanguage apps. */}
-            <meta property="og:locale" content="en-US" />
-            <meta property="og:type" content={'website'} />
-            <meta property="og:title" content={meta.openGraphTitle} />
-            <meta property="og:description" content={meta.openGraphDescription} />
-            <meta property="og:image" content={meta.openGraphImage?.fields.file.url} />
-            {/* TODO: Enter site name */}
-            <meta property="og:site_name" content="" />
-            <meta
-                name="robots"
-                content={`${meta.index ? 'index' : 'noindex'}, ${meta.follow ? 'follow' : 'nofollow'}`}
-            />
-            <link rel="apple-touch-icon-precomposed" sizes="180x180" href="apple-touch-icon.png" />
-            <link rel="icon" type="image/png" href="favicon-32x32.png" sizes="32x32" />
-            <link rel="icon" type="image/png" href="favicon-16x16.png" sizes="16x16" />
-            {/* TODO: Enter application name */}
-            <meta name="application-name" content="" />
-            <meta name="msapplication-TileColor" content="#FFFFFF" />
-            <meta name="msapplication-TileImage" content="mstile-144x144.png" />
-        </Head>
-    );
+const Meta = ({
+  title,
+  description,
+  openGraphTitle,
+  openGraphDescription,
+  openGraphImage,
+  index = true,
+  follow = true,
+}: Props): JSX.Element => {
+  const metaTitle = title ? `${title} | Forward` : 'Forward';
+  const ogTitle = openGraphTitle ?? metaTitle;
+  const ogDescription = openGraphDescription ?? description;
+
+  return (
+    <Head>
+      <title>{metaTitle}</title>
+      {description && <meta name="description" content={description} />}
+      {/* <meta property="og:locale" content={locale} /> */}
+      <meta property="og:type" content="website" />
+      {ogTitle && <meta property="og:title" content={ogTitle} />}
+      {ogDescription && (
+        <meta property="og:description" content={ogDescription} />
+      )}
+      {openGraphImage && <meta property="og:image" content={openGraphImage} />}
+      <meta property="og:site_name" content="Forward" />
+      <meta
+        name="robots"
+        content={`${index ? 'index' : 'noindex'}, ${
+          follow ? 'follow' : 'nofollow'
+        }`}
+      />
+    </Head>
+  );
 };
 
 export default Meta;

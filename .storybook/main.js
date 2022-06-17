@@ -1,85 +1,42 @@
-const {
-	appendLoaders,
-	detectLoaders,
-	getNumOptimizationLoadersInstalled,
-} = require('next-optimized-images/lib/loaders');
-const { showWarning } = require('next-optimized-images/lib/migrater');
-const { getConfig } = require('next-optimized-images/lib/config');
 const path = require('path');
 
 module.exports = {
-	addons: [
-		'@storybook/addon-knobs/register',
-		'@storybook/addon-actions/register',
-		'@storybook/addon-viewport/register',
-		{
-			name: '@storybook/addon-postcss',
-			options: {
-				styleLoaderOptions: {
-					implementation: require('postcss'),
-				},
-				postcssLoaderOptions: {
-					implementation: require('postcss'),
-				},
-		    },
-		},
-	],
-	stories: ['../src/**/*.stories.[tj]s[x]'],
-	webpackFinal: async (config, { isServer }) => {
-		let enrichedConfig = config;
+  stories: ['../src/**/*.stories.mdx', '../src/**/*.stories.@(js|jsx|ts|tsx)'],
+  addons: [
+    '@storybook/preset-scss',
+    '@storybook/addon-links',
+    '@storybook/addon-essentials',
+    '@storybook/addon-interactions',
+    'storybook-addon-next-router',
+  ],
+  framework: '@storybook/react',
+  core: {
+    builder: '@storybook/builder-webpack5',
+  },
+  webpackFinal: async (config) => {
+    let enrichedConfig = config;
 
-		enrichedConfig.module.rules = [
-			{
-				test: /\.(ts|tsx)$/,
-				loader: require.resolve('babel-loader'),
-				options: {
-					presets: [require.resolve('babel-preset-react-app')],
-				},
-			},
-			{
-				test: /\.(css)$/,
-				use: [
-					'style-loader',
-					{ loader: 'css-loader', options: { modules: true, importLoaders: 1 } },
-					'postcss-loader',
-				],
-			},
-			{
-				test: /\.(eot|otf|webp|ttf|woff|woff2)(\?.*)?$/,
-				loader: require.resolve('file-loader'),
-				query: {
-					name: 'static/media/[name].[hash:8].[ext]',
-				},
-			},
-		];
+    enrichedConfig.resolve.alias = {
+      ...enrichedConfig.resolve.alias,
+      '~': path.resolve(__dirname, '../'),
+      '@api': path.resolve(__dirname, '../src/api'),
+      '@assets': path.resolve(__dirname, '../src/assets'),
+      '@blocks': path.resolve(__dirname, '../src/blocks'),
+      '@components': path.resolve(__dirname, '../src/components'),
+      '@atoms': path.resolve(__dirname, '../src/components/atoms'),
+      '@molecules': path.resolve(__dirname, '../src/components/molecules'),
+      '@organisms': path.resolve(__dirname, '../src/components/organisms'),
+      '@templates': path.resolve(__dirname, '../src/components/templates'),
+      '@contexts': path.resolve(__dirname, '../src/contexts'),
+      '@hooks': path.resolve(__dirname, '../src/hooks'),
+      '@libs': path.resolve(__dirname, '../src/libs'),
+      '@mocks': path.resolve(__dirname, '../src/mocks'),
+      '@pages': path.resolve(__dirname, '../src/pages'),
+      '@styles': path.resolve(__dirname, '../src/styles'),
+      '@typings': path.resolve(__dirname, '../src/typings'),
+      '@utils': path.resolve(__dirname, '../src/utils'),
+    };
 
-		// detect all installed loaders
-		const detectedLoaders = detectLoaders(path.join() + '../');
-
-		// show a warning if images should get optimized but no loader is installed
-		if (getNumOptimizationLoadersInstalled(detectedLoaders) === 0 && isServer) {
-			showWarning();
-		}
-
-		// append loaders
-		enrichedConfig = appendLoaders(
-			config,
-			getConfig({
-				imagesPublicPath: url => url,
-				imagesOutputPath: url => url,
-			}),
-			detectedLoaders,
-			isServer,
-			true,
-		);
-
-		enrichedConfig.resolve.extensions.push('.ts', '.tsx');
-		enrichedConfig.resolve.alias = {
-			...enrichedConfig.resolve.alias,
-			customKnobs: path.resolve(__dirname, './knobs'),
-			'~': path.resolve(__dirname, '../')
-		};
-
-		return enrichedConfig;
-	}
+    return enrichedConfig;
+  },
 };

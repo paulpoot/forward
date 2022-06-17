@@ -1,31 +1,50 @@
-import React, { PropsWithChildren } from 'react';
-import { AppProps } from 'next/app';
-import '~/styles.css';
-import { NextPage } from 'next';
-import { IPageFields } from '~/@types/generated/contentful';
+import React from 'react';
+
+import type { NextPage } from 'next';
+import type { AppProps } from 'next/app';
+import Head from 'next/head';
+
+import RobotoRegularFont from '@assets/fonts/Roboto-Regular.woff2';
+import FontFace from '@blocks/font-face';
+import '@styles/base.scss';
+import type { LayoutProps } from '@templates/layouts/DefaultLayout/DefaultLayout';
 
 export type CustomNextPage<P> = NextPage<P> & {
-    Layout: React.FunctionComponent<{
-        children: React.ReactNode;
-        pageProps: {
-            data: IPageFields;
-        };
-    }>;
+  Layout: React.FunctionComponent<LayoutProps>;
 };
 
 type CustomAppProps = AppProps & {
-    Component: CustomNextPage<Record<string, unknown>>;
+  Component: CustomNextPage<Record<string, unknown>>;
 };
 
-const Noop = ({ children }: PropsWithChildren<Record<string, unknown>>): React.ReactNode => children;
+function MyApp({ Component, pageProps }: CustomAppProps) {
+  const Layout = Component.Layout || React.Fragment;
 
-const App = ({ Component, pageProps }: CustomAppProps): JSX.Element => {
-    const Layout = Component.Layout || Noop;
-    return (
-        <Layout pageProps={pageProps}>
-            <Component {...pageProps} />
-        </Layout>
-    );
-};
+  return (
+    <>
+      <Head>
+        <meta charSet="utf-8" />
+        <meta name="viewport" content="initial-scale=1.0, width=device-width" />
+        <meta httpEquiv="X-UA-Compatible" content="IE=edge" />
+        <link rel="icon" href="/icon.svg" type="image/svg+xml" />
+        <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+        <link rel="manifest" href="/manifest.webmanifest" />
+        <meta name="theme-color" content="#ffffff" />
+        <meta name="application-name" content="Forward" />
 
-export default App;
+        <link
+          rel="preload"
+          as="font"
+          crossOrigin="anonymous"
+          href={RobotoRegularFont}
+        />
+      </Head>
+      <FontFace />
+      <Layout>
+        <Component {...pageProps} />
+      </Layout>
+    </>
+  );
+}
+
+export default MyApp;

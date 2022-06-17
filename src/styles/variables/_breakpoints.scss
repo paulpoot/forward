@@ -1,0 +1,11 @@
+// Breakpoints (these are also listed in the mediaquery context
+// small: 376px
+// medium: 1024px
+// large: 1440px
+// extra-large: 1920px
+$breakpoints: (
+  'small': 23.5em,
+  'medium': 64em,
+  'large': 90em,
+  'extra-large': 120em,
+);
