@@ -13,7 +13,7 @@ const DefaultLayout = ({ children }: LayoutProps) => (
     <footer className={css.footer}>
       <Text variant="body">
         <Text color="secondary" variant="label">
-          Forward
+          <a href="https://github.com/paulpoot/forward">Forward</a>
         </Text>{' '}
         - An opinionated Next.js boilerplate
       </Text>
