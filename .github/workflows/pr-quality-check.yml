@@ -66,7 +66,7 @@ jobs:
         uses: bahmutov/npm-install@v1
 
       - name: ⚗️ Run jest
-        run: yarn test --coverage
+        run: yarn test:coverage
 
   build:
     name: 👷‍♀️ Building
