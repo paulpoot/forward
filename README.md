@@ -7,6 +7,7 @@ This is an opinionated [Next.js](https://nextjs.org/) boilerplate that features 
 - Next.js with strict Typescript setup
 - Storybook
 - Jest and Testing Library
+  - Includes some ready to use scripts to collect code coverage and open the coverage report
 - SASS
 - normalize.css
 - Husky with Commitlint set to conventional commits
@@ -15,6 +16,7 @@ This is an opinionated [Next.js](https://nextjs.org/) boilerplate that features 
 - A folder structure that should cover pretty much everything you want for most larger projects
 - Setup for custom fonts
 - A few ready-to-use components, like a meta, heading, spacer and text component
+  - Includes unit tests
 - Default layout setup
 - A media query context that can be used to determine screensize in Javascript
 - A basic setup for global styling and variables
