@@ -24,7 +24,7 @@ const Heading = ({
     () => ({
       ...props,
       className: clsx(props.className, css[color], css[align || ''], {
-        [css.spacingSmall]: spacing === 'sm',
+        [css['spacing-small']]: spacing === 'sm',
       }),
       level: undefined,
       children: undefined,

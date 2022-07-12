@@ -8,7 +8,6 @@
       @content;
     }
   } @else {
-    @warn "Value `#{$breakpoint}` is not a valid breakpoint. "
-			+ "Available breakpoints are: #{map-keys($breakpoints)}.";
+    @warn "Value `#{$breakpoint}` is not a valid breakpoint. Available breakpoints are: #{map-keys($breakpoints)}.";
   }
 }

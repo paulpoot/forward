@@ -26,6 +26,12 @@ jobs:
       - name: 🔬 Lint
         run: yarn lint
 
+      - name: 🧹 Prettier
+        run: yarn prettier
+
+      - name: 🎨 Stylelint
+        run: yarn stylelint
+
   typecheck:
     name: 👮‍♀️ Type checking
     runs-on: ubuntu-latest
