@@ -66,7 +66,7 @@
     "file-loader": "^6.2.0",
     "husky": "^8.0.1",
     "jest": "^28.1.1",
-    "jest-environment-jsdom": "^28.1.1",
+    "jest-environment-jsdom": "^29.1.2",
     "next-compose-plugins": "^2.2.1",
     "next-router-mock": "^0.7.4",
     "normalize.css": "^8.0.1",
