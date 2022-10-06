@@ -6316,14 +6316,15 @@ eslint-plugin-react@^7.29.4, eslint-plugin-react@^7.30.0:
     semver "^6.3.0"
     string.prototype.matchall "^4.0.7"
 
-eslint-plugin-storybook@^0.5.12:
-  version "0.5.12"
-  resolved "https://registry.yarnpkg.com/eslint-plugin-storybook/-/eslint-plugin-storybook-0.5.12.tgz#b84d38400b91a9abdf15cd2c81644bff27861a96"
-  integrity sha512-ojuNKnrZFrQpm5N5Lp8UR0VEn4HtLjlNn6nxQAYlmTsEXNigtId1XPuMbXAsvFcEmv3RTb5l+9tZgkhSURfACg==
+eslint-plugin-storybook@^0.6.4:
+  version "0.6.4"
+  resolved "https://registry.yarnpkg.com/eslint-plugin-storybook/-/eslint-plugin-storybook-0.6.4.tgz#4b4f077fcc0cf3b3f4ebc730426497e814e38e49"
+  integrity sha512-wxwbAZqlgjj6MbS/llY7wnXCCUsuFcLB1XnahbgBtjmsFUggpiECt01Dt8huaKvriVXg2w4d7Ye+GzA00rdcKg==
   dependencies:
     "@storybook/csf" "^0.0.1"
     "@typescript-eslint/experimental-utils" "^5.3.0"
     requireindex "^1.1.0"
+    ts-dedent "^2.2.0"
 
 eslint-scope@5.1.1, eslint-scope@^5.1.1:
   version "5.1.1"
@@ -11401,10 +11402,10 @@ sass-loader@^13.0.0:
     klona "^2.0.4"
     neo-async "^2.6.2"
 
-sass@^1.52.3:
-  version "1.52.3"
-  resolved "https://registry.yarnpkg.com/sass/-/sass-1.52.3.tgz#b7cc7ffea2341ccc9a0c4fd372bf1b3f9be1b6cb"
-  integrity sha512-LNNPJ9lafx+j1ArtA7GyEJm9eawXN8KlA1+5dF6IZyoONg1Tyo/g+muOsENWJH/2Q1FHbbV4UwliU0cXMa/VIA==
+sass@^1.55.0:
+  version "1.55.0"
+  resolved "https://registry.yarnpkg.com/sass/-/sass-1.55.0.tgz#0c4d3c293cfe8f8a2e8d3b666e1cf1bff8065d1c"
+  integrity sha512-Pk+PMy7OGLs9WaxZGJMn7S96dvlyVBwwtToX895WmCpAOr5YiJYEUJfiJidMuKb613z2xNWcXCHEuOvjZbqC6A==
   dependencies:
     chokidar ">=3.0.0 <4.0.0"
     immutable "^4.0.0"
