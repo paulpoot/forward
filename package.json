@@ -33,7 +33,7 @@
     "@commitlint/config-conventional": "^17.0.2",
     "@next/bundle-analyzer": "^12.2.2",
     "@storybook/addon-actions": "^6.5.9",
-    "@storybook/addon-essentials": "^6.5.9",
+    "@storybook/addon-essentials": "^6.5.13",
     "@storybook/addon-interactions": "^6.5.9",
     "@storybook/addon-links": "^6.5.9",
     "@storybook/builder-webpack5": "^6.5.9",
